@@ -7,40 +7,62 @@ import Data from '../data/Data.json'
 export default class ProductTable extends Component {
     render() {
 
-        let filteredProduct = Data.map(dataDetails => {
+        // let filteredProduct = Data.map(dataDetails => {
            
-            if (dataDetails.category === "Sporting Goods") {
-                return (
-                    <div>                      
-                        <ProductItem detail={dataDetails} key={dataDetails.id} />
-                    </div>
-                    )
-            }
+        //     if (dataDetails.category === "Sporting Goods") {
+        //         return (
+        //             <div>                      
+        //                 <ProductItem detail={dataDetails} key={dataDetails.id} />
+        //             </div>
+        //             )
+        //     }
             
-         }) 
+        //  }) 
+
+
+
+
+        //  BELOW IS: short circuit operator, like ternary but instead renders something if condition is true & nothing if its not
+        let sportProducts = Data.map(dataDetails => {
+           return ( 
+                (dataDetails.category === "Sporting Goods") && 
+                <div>
+                    <ProductItem detail={dataDetails} key={dataDetails.id} />
+                </div>
+                )
+        })
+
+
+        let electronicProducts = Data.map(dataDetails => {
+            return ( 
+                 (dataDetails.category === "Electronics") && 
+                 <div>
+                     <ProductItem detail={dataDetails} key={dataDetails.id} />
+                 </div>
+                 )
+         })
+
 
 
         return (
             <div>
                 <div className="flex-row">
-                    <div>Name</div>
-                    <div>Price</div>
+                    <div className="titles">Name</div>
+                    <div className="titles">Price</div>
                 </div>
 
                 
                 <div>
-                <ProductCatagoryHeading title="Sporting Goods" /> 
-                    {filteredProduct}
+                    <ProductCatagoryHeading title="Sporting Goods" /> 
+                        {sportProducts}
                 </div>
                 
                 
+                <div>
+                    <ProductCatagoryHeading title="Electronics" /> 
+                        {electronicProducts}
+                </div>
 
-                {/* <ProductCatagoryHeading title="Electronics" /> */}
-
-                {/* { Data.map(dataDetails => {
-                   return <ProductItem detail={dataDetails} key={dataDetails.id} />
-                   
-                }) } */}
 
 
 

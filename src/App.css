@@ -28,5 +28,18 @@
   width: 400px;
   margin: 20px auto;
   border: 1px solid slategray;
-  padding: 30px;
+  padding: 35px;
+  line-height: 1.8;
+}
+
+.headings {
+  font-size: 18px;
+  font-weight: bold;
+  color: rgb(0, 153, 153);
+}
+
+.titles {
+  text-transform: uppercase;
+  margin-bottom: 8px;
+  color: slategray;
 }
