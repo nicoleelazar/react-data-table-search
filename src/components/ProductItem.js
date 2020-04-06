@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import Data from '../data/Data.json'
 
 
 export default class ProductItem extends Component {

@@ -7,40 +7,31 @@ import Data from '../data/Data.json'
 export default class ProductTable extends Component {
     render() {
 
-        // let filteredProduct = Data.map(dataDetails => {
-           
-        //     if (dataDetails.category === "Sporting Goods") {
-        //         return (
-        //             <div>                      
-        //                 <ProductItem detail={dataDetails} key={dataDetails.id} />
-        //             </div>
-        //             )
-        //     }
+        const { filterText, inStockOnly } = this.props
+
+        let rows = [];
+        let previousCategory;
+
+        Data.map(dataDetails => {
             
-        //  }) 
-
-
-
-
-        //  BELOW IS: short circuit operator, like ternary but instead renders something if condition is true & nothing if its not
-        let sportProducts = Data.map(dataDetails => {
-           return ( 
-                (dataDetails.category === "Sporting Goods") && 
-                <div>
-                    <ProductItem detail={dataDetails} key={dataDetails.id} />
-                </div>
+           
+            if (dataDetails.category !== previousCategory) {
+                rows.push(
+                    < ProductCatagoryHeading detail={dataDetails}/>
                 )
-        })
+            }
+
+            rows.push (
+                <ProductItem detail={dataDetails} key={dataDetails.id} />
+            )
+            
+            previousCategory = dataDetails.category;
+
+         }) 
 
 
-        let electronicProducts = Data.map(dataDetails => {
-            return ( 
-                 (dataDetails.category === "Electronics") && 
-                 <div>
-                     <ProductItem detail={dataDetails} key={dataDetails.id} />
-                 </div>
-                 )
-         })
+
+
 
 
 
@@ -51,19 +42,8 @@ export default class ProductTable extends Component {
                     <div className="titles">Price</div>
                 </div>
 
-                
-                <div>
-                    <ProductCatagoryHeading title="Sporting Goods" /> 
-                        {sportProducts}
-                </div>
-                
-                
-                <div>
-                    <ProductCatagoryHeading title="Electronics" /> 
-                        {electronicProducts}
-                </div>
 
-
+                <div> {rows} </div>
 
 
             </div>
