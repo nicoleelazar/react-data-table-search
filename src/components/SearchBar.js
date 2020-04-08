@@ -6,6 +6,7 @@ export default class SearchBar extends Component {
         super(props)
     
         this.handleStock = this.handleStock.bind(this)
+        this.handleFilter = this.handleFilter.bind(this)
         
     }
 
@@ -14,19 +15,21 @@ export default class SearchBar extends Component {
         this.props.onStockChange(event.target.checked)
     }
 
-    
+    handleFilter(event) {
+        this.props.onTextInput(event.target.value)
+    }
     
 
     render() {
         
 
-        const { inStockOnly } = this.props
+        const { inStockOnly, filterText } = this.props
 
 
         return (
             <form className="search-bar">
                 <label>
-                    <input className="input-field" type="text" placeholder="search..."  />
+                    <input className="input-field" type="text" placeholder="search product name..." value={filterText} onChange={this.handleFilter} />
                 </label>
 
                 <label>
