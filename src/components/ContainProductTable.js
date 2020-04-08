@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import SearchBar from './SearchBar'
 import ProductTable from './ProductTable'
-import Data from '../data/Data.json'
 
 
 
@@ -13,27 +12,30 @@ export default class ContainProductTable extends Component {
             filterText: '',
             inStockOnly: false
         }
+
+        this.handleStock = this.handleStock.bind(this)
     }
 
-    handleStock() {
+    handleStock(inStockOnly) {
         this.setState ({
-           
+           inStockOnly: inStockOnly
         })
     }
 
     
-    handleInput() {
-        this.setState ({
-           
-        })
-    }
     
 
     render() {
         return (
             <div className="container">
-                <SearchBar filterText = {this.state.filterText} inStockOnly = {this.state.inStockOnly} />
-                <ProductTable  />
+                <SearchBar 
+                    // passing down state as props
+                     inStockOnly = {this.state.inStockOnly} 
+
+                    // passing down method as props
+                    onStockChange={this.handleStock}
+                />
+                <ProductTable  inStockOnly={this.state.inStockOnly} />
                 
             </div>
         )

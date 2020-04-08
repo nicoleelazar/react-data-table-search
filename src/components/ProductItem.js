@@ -5,7 +5,7 @@ export default class ProductItem extends Component {
     render() {
 
         // BELOW IS: Destructuring 
-        const {id, category, price, name, stocked} = this.props.detail
+        const {price, name} = this.props.detail
 
         return (
             <div className="flex-row">

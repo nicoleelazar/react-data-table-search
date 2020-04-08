@@ -7,12 +7,17 @@ import Data from '../data/Data.json'
 export default class ProductTable extends Component {
     render() {
 
-        const { filterText, inStockOnly } = this.props
+        const { inStockOnly } = this.props
 
         let rows = [];
         let previousCategory;
 
-        Data.map(dataDetails => {
+        Data.forEach(dataDetails => {
+
+            //if checked & product is not in stock
+            if(inStockOnly && !dataDetails.stocked) {
+                return
+            }
             
            
             if (dataDetails.category !== previousCategory) {
@@ -27,6 +32,9 @@ export default class ProductTable extends Component {
             
             previousCategory = dataDetails.category;
 
+            
+
+            // console.log (dataDetails.stocked) 
          }) 
 
 
