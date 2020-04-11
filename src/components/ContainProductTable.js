@@ -10,16 +10,16 @@ export default class ContainProductTable extends Component {
     
         this.state = {
             filterText: '',
-            inStockOnly: false
+            inStockOnly: false,
         }
 
         this.handleStock = this.handleStock.bind(this)
         this.handleFilter = this.handleFilter.bind(this)
     }
 
-    handleStock(checkboxInput) {
+    handleStock(event) {
         this.setState ({
-           inStockOnly: checkboxInput
+           inStockOnly: event.target.checked,
         })
     }
 

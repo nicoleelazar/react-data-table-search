@@ -33,7 +33,7 @@ export default class ProductTable extends Component {
             
             if (dataDetails.category !== previousCategory) {
                 rows.push(
-                    < ProductCatagoryHeading detail={dataDetails}/>
+                    < ProductCatagoryHeading detail={dataDetails} />
                 )
             }
 
